@@ -9,13 +9,14 @@ import User from '../../models/user/user.model';
 })
 export class UserService {
 
-	private controller: string = 'User';
+	private controller: string = 'user';
+	private _baseUrl: string;
 
-	@Inject('BASE_URL') baseUrl: string;
+	constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
+		this._baseUrl = `${baseUrl}${this.controller}`;
+	}
 
-	constructor(private http: HttpClient) { }
-
-	getAll(): Observable<Array<User>> {
-		return this.http.get<Array<User>>(`${this.baseUrl}${this.controller}/GetAll`);
+	getAll(token: string): Observable<Array<User>> {
+		return this.http.get<Array<User>>(`${this._baseUrl}/all`);
 	}
 }
