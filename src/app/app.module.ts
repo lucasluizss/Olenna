@@ -8,20 +8,22 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { Interceptor } from './security/http-interceptor';
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { RouterModule } from '@angular/router';
+import { AddUserComponent } from './components/user/add-user/add-user.component';
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		LoginComponent,
-		NavMenuComponent
+		NavMenuComponent,
+		AddUserComponent
 	],
 	imports: [
 		AppRoutingModule,
 		BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
 		HttpClientModule,
 		RouterModule.forRoot([
-			// { path: '', component: HomeComponent, pathMatch: 'full' },
-			{ path: 'counter', component: LoginComponent },
+			{ path: '', component: LoginComponent, pathMatch: 'full' },
+			{ path: 'add-user', component: AddUserComponent },
 		])
 	],
 	providers: [{
