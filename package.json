@@ -16,9 +16,16 @@
     "@angular/compiler": "~8.2.0",
     "@angular/core": "~8.2.0",
     "@angular/forms": "~8.2.0",
+    "@angular/http": "6.1.10",
     "@angular/platform-browser": "~8.2.0",
     "@angular/platform-browser-dynamic": "~8.2.0",
+    "@angular/platform-server": "6.1.10",
     "@angular/router": "~8.2.0",
+    "@nguniversal/module-map-ngfactory-loader": "6.0.0",
+    "bootstrap": "^4.3.1",
+    "core-js": "^2.5.4",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.14.3",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
@@ -39,9 +46,12 @@
     "karma-coverage-istanbul-reporter": "~2.0.1",
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
+    "typescript": "~3.5.3"
+  },
+  "optionalDependencies": {
+    "node-sass": "^4.9.3",
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
-    "tslint": "~5.15.0",
-    "typescript": "~3.5.3"
+    "tslint": "~5.15.0"
   }
 }
