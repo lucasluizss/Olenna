@@ -1,6 +1,9 @@
 <body>
-  <app-nav-menu></app-nav-menu>
+  <div *ngIf="currentUser">
+    <app-nav-menu></app-nav-menu>
+  </div>
   <div class="container">
+    <alert></alert>
     <router-outlet></router-outlet>
   </div>
 </body>

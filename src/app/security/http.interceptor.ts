@@ -8,10 +8,16 @@ import { Observable } from 'rxjs';
 
 export class Interceptor implements HttpInterceptor {
 
-	intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+	intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-		const clonedRequest = req.clone({
-			headers: req.headers.set('token', sessionStorage.getItem('token'))
+		const allowedUrls = ['login', 'new'];
+
+		if (allowedUrls.includes(request.url.split('/').reverse()[0])) {
+			return next.handle(request);
+		}
+
+		const clonedRequest = request.clone({
+			headers: request.headers.set('token', sessionStorage.getItem('token'))
 		});
 
 		return next.handle(clonedRequest);

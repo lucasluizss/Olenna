@@ -25,19 +25,21 @@ export class AuthService {
 
 	login(email: string, password: string): any {
 		return this.http.post<any>(`${this._baseUrl}/login`, { email, password })
-			.pipe(map(user => {
-				if (user && user.token) {
-					localStorage.setItem('currentUser', JSON.stringify(user));
-					this.currentUserSubject.next(user);
+			.pipe(map(response => {
+				if (response && response.Token) {
+					localStorage.setItem('currentUser', JSON.stringify(response));
+					sessionStorage.setItem('token', response.Token);
+					this.currentUserSubject.next(response);
 				}
 
-				return user;
+				return response;
 			}));
 	}
 
 	logout(): void {
 		this.http.post(`${this._baseUrl}/logout`, {});
 		localStorage.removeItem('currentUser');
+		sessionStorage.removeItem('token');
 		this.currentUserSubject.next(null);
 	}
 

@@ -1,30 +1,35 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { LoginComponent } from './components/auth/login/login.component';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { Interceptor } from './security/http.interceptor';
-import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
+import { appRoutingModule } from './app.routing';
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
+import { Interceptor } from './security/http.interceptor';
+import { BrowserModule } from '@angular/platform-browser';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+
+//#region Components Imports
+import { AppComponent } from './app.component';
+import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/auth/login/login.component';
+import { AlertComponent } from './components/shared/alert/alert.component';
+import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { AddUserComponent } from './components/user/add-user/add-user.component';
+//#endregion
 
 @NgModule({
 	declarations: [
+		AlertComponent,
 		AppComponent,
+		HomeComponent,
 		LoginComponent,
 		NavMenuComponent,
 		AddUserComponent
 	],
 	imports: [
-		AppRoutingModule,
-		BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
+		appRoutingModule,
 		HttpClientModule,
-		RouterModule.forRoot([
-			{ path: '', component: LoginComponent, pathMatch: 'full' },
-			{ path: 'add-user', component: AddUserComponent },
-		])
+		ReactiveFormsModule,
+		BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
+		HttpClientModule
 	],
 	providers: [{
 		provide: HTTP_INTERCEPTORS,
