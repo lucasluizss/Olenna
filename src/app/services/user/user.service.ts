@@ -16,7 +16,11 @@ export class UserService {
 		this._baseUrl = `${baseUrl}${this.controller}`;
 	}
 
-	getAll(): Observable<Array<User>> {
+	get(): Observable<any> {
+		return this.http.get<User>(`${this._baseUrl}/get`);
+	}
+
+	getAll(): Observable<any> {
 		return this.http.get<Array<User>>(`${this._baseUrl}/all`);
 	}
 

@@ -2,7 +2,7 @@ import {
 	HttpEvent,
 	HttpInterceptor,
 	HttpHandler,
-	HttpRequest,
+	HttpRequest
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -17,7 +17,9 @@ export class Interceptor implements HttpInterceptor {
 		}
 
 		const clonedRequest = request.clone({
-			headers: request.headers.set('token', sessionStorage.getItem('token'))
+			setHeaders: {
+				Authorization: sessionStorage.getItem('token')
+			}
 		});
 
 		return next.handle(clonedRequest);

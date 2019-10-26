@@ -20,28 +20,31 @@ export class HomeComponent implements OnInit, OnDestroy {
 		private authenticationService: AuthService,
 		private userService: UserService
 	) {
-		this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
-			this.currentUser = user;
-		});
+		this.currentUserSubscription = userService.get()
+			.subscribe(response => {
+				this.currentUser = response.User;
+			});
 	}
 
 	ngOnInit(): void {
+		this.loadAllUsers();
 	}
 
 	ngOnDestroy(): void {
-		// unsubscribe to ensure no memory leaks
 		this.currentUserSubscription.unsubscribe();
 	}
 
 	deleteUser(id: number): void {
-		this.userService.delete(id).pipe(first()).subscribe(() => {
-			this.loadAllUsers();
-		});
+		this.userService.delete(id).pipe(first())
+			.subscribe(() => {
+				this.loadAllUsers();
+			});
 	}
 
 	private loadAllUsers(): void {
-		this.userService.getAll().pipe(first()).subscribe(users => {
-			this.users = users;
-		});
+		this.userService.getAll().pipe(first())
+			.subscribe(response => {
+				this.users = response.Users;
+			});
 	}
 }
