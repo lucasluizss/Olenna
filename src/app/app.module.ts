@@ -1,3 +1,4 @@
+import { NgxMaskModule } from 'ngx-mask';
 import { NgModule } from '@angular/core';
 import { appRoutingModule } from './app.routing';
 import { RouterModule } from '@angular/router';
@@ -28,6 +29,7 @@ import { AddUserComponent } from './components/user/add-user/add-user.component'
 		appRoutingModule,
 		HttpClientModule,
 		ReactiveFormsModule,
+		NgxMaskModule.forRoot(),
 		BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
 		HttpClientModule
 	],

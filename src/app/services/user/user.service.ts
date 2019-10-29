@@ -1,3 +1,4 @@
+import { catchError } from 'rxjs/operators';
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -28,7 +29,7 @@ export class UserService {
 		return this.http.post<User>(`${this._baseUrl}/new`, request);
 	}
 
-	delete(id: number): Observable<Array<User>> {
-		throw new Error('Method not implemented.');
+	delete(request: string): Observable<any> {
+		return this.http.delete<any>(`${this._baseUrl}/delete/${request}`);
 	}
 }

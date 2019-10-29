@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
+import { Location } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 //#region Services
 import { AlertService } from 'src/app/services/shared/alert.service';
@@ -21,9 +21,8 @@ export class AddUserComponent implements OnInit {
 	submitted = false;
 
 	constructor(
+		private _location: Location,
 		private formBuilder: FormBuilder,
-		private router: Router,
-		private authenticationService: AuthService,
 		private userService: UserService,
 		private alertService: AlertService
 	) {
@@ -45,6 +44,10 @@ export class AddUserComponent implements OnInit {
 
 	get f(): any { return this.registerForm.controls; }
 
+	back(): void {
+		this._location.back();
+	}
+
 	onSubmit(): void {
 		this.submitted = true;
 
@@ -57,7 +60,8 @@ export class AddUserComponent implements OnInit {
 			.pipe(first())
 			.subscribe(data => {
 				this.alertService.success('Registration successful', true);
-				// this.router.navigate(['/login']);
+				this.loading = false;
+				this.back();
 			}, error => {
 				this.alertService.error(error.error.Message);
 				this.loading = false;
