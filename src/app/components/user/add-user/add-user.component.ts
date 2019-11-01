@@ -38,7 +38,7 @@ export class AddUserComponent implements OnInit {
 			birthDate: ['', Validators.required],
 			phone: ['', Validators.required],
 			email: ['', Validators.required],
-			password: ['', [Validators.required, Validators.minLength(6)]]
+			password: ['', [Validators.required, Validators.minLength(8)]]
 		});
 	}
 

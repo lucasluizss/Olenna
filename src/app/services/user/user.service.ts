@@ -17,19 +17,27 @@ export class UserService {
 		this._baseUrl = `${baseUrl}${this.controller}`;
 	}
 
-	get(): Observable<any> {
+	public get(): Observable<User> {
 		return this.http.get<User>(`${this._baseUrl}/get`);
 	}
 
-	getAll(): Observable<any> {
+	public getById(request: string): Observable<any> {
+		return this.http.get<User>(`${this._baseUrl}/get/${request}`);
+	}
+
+	public getAll(): Observable<any> {
 		return this.http.get<Array<User>>(`${this._baseUrl}/all`);
 	}
 
-	register(request: User): Observable<User> {
+	public register(request: User): Observable<User> {
 		return this.http.post<User>(`${this._baseUrl}/new`, request);
 	}
 
-	delete(request: string): Observable<any> {
+	public edit(request: User): Observable<User> {
+		return this.http.post<User>(`${this._baseUrl}/edit`, request);
+	}
+
+	public delete(request: string): Observable<any> {
 		return this.http.delete<any>(`${this._baseUrl}/delete/${request}`);
 	}
 }
