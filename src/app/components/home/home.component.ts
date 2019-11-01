@@ -12,17 +12,17 @@ import User from 'src/app/models/user/user.model';
 })
 export class HomeComponent implements OnInit, OnDestroy {
 
-	currentUser: User;
-	currentUserSubscription: Subscription;
-	users: User[] = [];
+	public currentUser: User;
+	public users: User[] = [];
+	private currentUserSubscription: Subscription;
 
 	constructor(
-		private userService: UserService,
+		private _userService: UserService,
 		private alertService: AlertService
 	) {
-		this.currentUserSubscription = userService.get()
+		this.currentUserSubscription = _userService.get()
 			.subscribe(response => {
-				this.currentUser = response.User;
+				this.currentUser = response;
 			});
 	}
 
@@ -34,8 +34,8 @@ export class HomeComponent implements OnInit, OnDestroy {
 		this.currentUserSubscription.unsubscribe();
 	}
 
-	deleteUser(id: string): void {
-		this.userService.delete(id)
+	public deleteUser(id: string): void {
+		this._userService.delete(id)
 			.subscribe(response => {
 				this.alertService.success(response.Message);
 				this.loadAllUsers();
@@ -45,7 +45,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 	}
 
 	private loadAllUsers(): void {
-		this.userService.getAll().pipe(first())
+		this._userService.getAll().pipe(first())
 			.subscribe(response => {
 				this.users = response.Users;
 			});
