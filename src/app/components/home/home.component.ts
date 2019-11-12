@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 	) {
 		this.currentUserSubscription = userService.get()
 			.subscribe(response => {
-				this.currentUser = response.User;
+				this.currentUser = response;
 			});
 	}
 
