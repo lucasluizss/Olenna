@@ -1,5 +1,6 @@
-import { AlertService } from './../../services/shared/alert.service';
 import { UserService } from './../../services/user/user.service';
+import { AuthService } from './../../services/auth/auth.service';
+import { AlertService } from './../../services/shared/alert.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { first } from 'rxjs/operators';
@@ -17,10 +18,11 @@ export class HomeComponent implements OnInit, OnDestroy {
 	private currentUserSubscription: Subscription;
 
 	constructor(
+		private _authService: AuthService,
 		private _userService: UserService,
 		private alertService: AlertService
 	) {
-		this.currentUserSubscription = _userService.get()
+		this.currentUserSubscription = _authService.currentUser
 			.subscribe(response => {
 				this.currentUser = response;
 			});
