@@ -1,5 +1,7 @@
 # Olenna
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/e582bde182e64a53bccc57243b6f3359)](https://app.codacy.com/manual/lucasluizss/Olenna?utm_source=github.com&utm_medium=referral&utm_content=lucasluizss/Olenna&utm_campaign=Badge_Grade_Dashboard)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.2.
 
 ## Development server
