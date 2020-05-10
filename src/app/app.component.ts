@@ -9,13 +9,11 @@ import User from './models/user/user.model';
 	styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-	title = 'Olenna';
+	public title = 'Olenna';
 
-	currentUser: User;
+	public currentUser: User;
 
-	constructor(
-		private authenticationService: AuthService
-	) {
+	constructor(private authenticationService: AuthService) {
 		this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
 	}
 }

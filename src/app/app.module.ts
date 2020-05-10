@@ -1,7 +1,6 @@
 import { NgxMaskModule } from 'ngx-mask';
 import { NgModule } from '@angular/core';
 import { appRoutingModule } from './app.routing';
-import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Interceptor } from './security/http.interceptor';
 import { BrowserModule } from '@angular/platform-browser';
@@ -14,6 +13,7 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { AlertComponent } from './components/shared/alert/alert.component';
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { AddUserComponent } from './components/user/add-user/add-user.component';
+import { environment } from 'src/environments/environment';
 //#endregion
 
 @NgModule({
@@ -33,11 +33,16 @@ import { AddUserComponent } from './components/user/add-user/add-user.component'
 		BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
 		HttpClientModule
 	],
-	providers: [{
-		provide: HTTP_INTERCEPTORS,
-		useClass: Interceptor,
-		multi: true
-	}],
+	providers: [
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: Interceptor,
+			multi: true
+		},
+		{ provide: 'BASE_URL' ,
+			useValue: environment.baseUrl
+		}
+	],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }
