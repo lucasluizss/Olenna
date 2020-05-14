@@ -25,11 +25,7 @@ export class AddUserComponent implements OnInit {
 		private formBuilder: FormBuilder,
 		private userService: UserService,
 		private alertService: AlertService
-	) {
-		// if (this.authenticationService.currentUserValue) {
-		// 	this.router.navigate(['/']);
-		// }
-	}
+	) { }
 
 	ngOnInit(): void {
 		this.registerForm = this.formBuilder.group({
