@@ -5,7 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 //#region Services
 import { AlertService } from 'src/app/services/shared/alert.service';
-import { AuthService } from './../../../services/auth/auth.service';
+import { AuthService } from '../../services/auth/auth.service';
 //#endregion
 
 @Component({

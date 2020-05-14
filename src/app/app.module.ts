@@ -2,14 +2,14 @@ import { NgxMaskModule } from 'ngx-mask';
 import { NgModule } from '@angular/core';
 import { appRoutingModule } from './app.routing';
 import { ReactiveFormsModule } from '@angular/forms';
-import { Interceptor } from './security/http.interceptor';
+import { Interceptor } from './core/security/http.interceptor';
 import { BrowserModule } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 //#region Components Imports
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
-import { LoginComponent } from './components/auth/login/login.component';
+import { HomeComponent } from './views/home/home.component';
+import { LoginComponent } from './views/login/login.component';
 import { AlertComponent } from './components/shared/alert/alert.component';
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { AddUserComponent } from './components/user/add-user/add-user.component';

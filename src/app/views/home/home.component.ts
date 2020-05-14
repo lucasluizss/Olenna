@@ -1,6 +1,6 @@
-import { UserService } from './../../services/user/user.service';
-import { AuthService } from './../../services/auth/auth.service';
-import { AlertService } from './../../services/shared/alert.service';
+import { UserService } from '../../services/user/user.service';
+import { AuthService } from '../../services/auth/auth.service';
+import { AlertService } from '../../services/shared/alert.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { first } from 'rxjs/operators';
