@@ -6,13 +6,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 //#region Services
 import { AlertService } from 'src/app/services/shared/alert.service';
 import { UserService } from './../../../services/user/user.service';
-import { AuthService } from './../../../services/auth/auth.service';
 //#endregion
 
 @Component({
 	selector: 'app-add-user',
-	templateUrl: './add-user.component.html',
-	styleUrls: ['./add-user.component.css']
+	templateUrl: './add-user.component.html'
 })
 export class AddUserComponent implements OnInit {
 
